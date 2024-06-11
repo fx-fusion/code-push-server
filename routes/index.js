@@ -12,25 +12,25 @@ router.get('/', (req, res, next) => {
   res.render('index', { title: 'CodePushServer' });
 });
 
-router.get('/README.md', (req, res, next) => {
-  var MarkdownIt = require('markdown-it');
-  const path = require('path');
-  const fs = require('fs');
-  const readFile = Promise.promisify(fs.readFile);
-  const README = path.join(__dirname, '../README.md');
-  readFile(README, { encoding: 'utf8' })
-  .then(source => {
-    var md = new MarkdownIt();
-    res.send(md.render(source));
-  })
-  .catch(e=>{
-    if (e instanceof AppError.AppError) {
-      res.send(e.message);
-    } else {
-      next(e);
-    }
-  });
-});
+// router.get('/README.md', (req, res, next) => {
+//   var MarkdownIt = require('markdown-it');
+//   const path = require('path');
+//   const fs = require('fs');
+//   const readFile = Promise.promisify(fs.readFile);
+//   const README = path.join(__dirname, '../README.md');
+//   readFile(README, { encoding: 'utf8' })
+//   .then(source => {
+//     var md = new MarkdownIt();
+//     res.send(md.render(source));
+//   })
+//   .catch(e=>{
+//     if (e instanceof AppError.AppError) {
+//       res.send(e.message);
+//     } else {
+//       next(e);
+//     }
+//   });
+// });
 
 router.get('/tokens', (req, res) => {
   res.render('tokens', { title: '获取token' });
