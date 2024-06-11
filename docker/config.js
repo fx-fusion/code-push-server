@@ -2,11 +2,11 @@ var config = {};
 config.development = {
   // Config for database, only support mysql.
   db: {
-    username: process.env.MYSQL_USERNAME,
-    password: process.env.MYSQL_PASSWORD,
-    database: process.env.MYSQL_DATABASE,
-    host: process.env.MYSQL_HOST,
-    port: process.env.MYSQL_PORT || 3306,
+    username: "root", //process.env.MYSQL_USERNAME,
+    password: "root", //process.env.MYSQL_PASSWORD,
+    database: "codepush", //process.env.MYSQL_DATABASE,
+    host: "127.0.0.1", //process.env.MYSQL_HOST,
+    port: "3306", //process.env.MYSQL_PORT || 3306,
     dialect: "mysql",
     logging: false,
     operatorsAliases: false,
@@ -18,12 +18,12 @@ config.development = {
     // Binary files download host address which Code Push Server listen to. the files storage in storageDir.
     downloadUrl: process.env.DOWNLOAD_URL,
     // public static download spacename.
-    public: '/download'
+    public: "/download",
   },
   jwt: {
     // Recommended: 63 random alpha-numeric characters
     // Generate using: https://www.grc.com/passwords.htm
-    tokenSecret: 'INSERT_RANDOM_TOKEN_KEY'
+    tokenSecret: "INSERT_RANDOM_TOKEN_KEY",
   },
   common: {
     /*
@@ -46,14 +46,14 @@ config.development = {
     rolloutClientUniqueIdCache: false,
   },
   // Config for smtp email，register module need validate user email project source https://github.com/nodemailer/nodemailer
-  smtpConfig:{
+  smtpConfig: {
     host: "smtp.aliyun.com",
     port: 465,
     secure: true,
     auth: {
       user: "",
-      pass: ""
-    }
+      pass: "",
+    },
   },
   // Config for redis (register module, tryLoginTimes module)
   redis: {
@@ -61,33 +61,33 @@ config.development = {
       host: process.env.REDIS_HOST,
       port: process.env.REDIS_PORT || 6379,
       retry_strategy: function (options) {
-        if (options.error.code === 'ECONNREFUSED') {
+        if (options.error.code === "ECONNREFUSED") {
           // End reconnecting on a specific error and flush all commands with a individual error
-          return new Error('The server refused the connection');
+          return new Error("The server refused the connection");
         }
         if (options.total_retry_time > 1000 * 60 * 60) {
-            // End reconnecting after a specific timeout and flush all commands with a individual error
-            return new Error('Retry time exhausted');
+          // End reconnecting after a specific timeout and flush all commands with a individual error
+          return new Error("Retry time exhausted");
         }
         if (options.times_connected > 10) {
-            // End reconnecting with built in error
-            return undefined;
+          // End reconnecting with built in error
+          return undefined;
         }
         // reconnect after
         return Math.max(options.attempt * 100, 3000);
-      }
-    }
-  }
-}
+      },
+    },
+  },
+};
 
 config.development.log4js = {
-  appenders: {console: { type: 'console'}},
-  categories : {
-    "default": { appenders: ['console'], level:'error'},
-    "startup": { appenders: ['console'], level:'info'},
-    "http": { appenders: ['console'], level:'info'}
-  }
-}
+  appenders: { console: { type: "console" } },
+  categories: {
+    default: { appenders: ["console"], level: "error" },
+    startup: { appenders: ["console"], level: "info" },
+    http: { appenders: ["console"], level: "info" },
+  },
+};
 
 config.production = Object.assign({}, config.development);
 module.exports = config;

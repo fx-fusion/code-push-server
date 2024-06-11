@@ -4,8 +4,8 @@ var config = {};
 config.test = {
   db: {
     username: "root",
-    password: null,
-    database: "codepush_test",
+    password: "root",
+    database: "codepush",
     host: "127.0.0.1",
     port: 3306,
     dialect: "mysql",
@@ -18,7 +18,7 @@ config.test = {
     public: '/download'
   },
   jwt: {
-    tokenSecret: 'INSERT_RANDOM_TOKEN_KEY'
+    tokenSecret: 'OkFHj4glUBhNRSEMxltqLo2BzmkUPjC3kubMJYy8cLOgpnUtfyTaG1EHnZ8q7JE'
   },
   common: {
     tryLoginTimes: 10,
