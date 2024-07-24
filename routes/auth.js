@@ -17,6 +17,7 @@ router.get('/login', (req, res) => {
     res.redirect(`${codePushWebUrl}/login`);
   } else {
     res.render('auth/login', { title: 'CodePushServer' });
+    // res.render('index', { title: 'CodePushServer' });
   }
 });
 
@@ -31,7 +32,8 @@ router.get('/register', (req, res) => {
     log.debug(`register redirect:${codePushWebUrl}`);
     res.redirect(`${codePushWebUrl}/register`);
   } else {
-    res.render('auth/login', { title: 'CodePushServer' });
+    // res.render('auth/login', { title: 'CodePushServer' });
+    res.render('index', { title: 'CodePushServer' });
   }
 });
 
@@ -55,6 +57,7 @@ router.post('/login', (req, res, next) => {
   .then((token) => {
     log.debug(token);
     res.send({status:'OK', results: {tokens: token}});
+    // res.send({status:'OK', results: {tokens: ''}});
   })
   .catch((e) => {
     if (e instanceof AppError.AppError) {
