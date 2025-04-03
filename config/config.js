@@ -60,7 +60,7 @@ config.development = {
     storageDir: "/Users/roots/data/app/HJT/code-push-server/storage", // process.env.STORAGE_DIR || "/Users/tablee/workspaces/storage",
     // Binary files download host address which Code Push Server listen to. the files storage in storageDir.
     downloadUrl:
-      process.env.LOCAL_DOWNLOAD_URL || "http://192.168.3.34:3000/download",
+      process.env.LOCAL_DOWNLOAD_URL || "http://192.168.3.2:3000/download",
     // public static download spacename.
     public: "/download",
   },
