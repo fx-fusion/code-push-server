@@ -30,7 +30,7 @@
   },
   "scripts": {
     "dev": "supervisor ./bin/www",
-    "start": "node ./bin/www",
+    "start": "NODE_ENV=production node ./bin/www",
     "init": "node ./bin/db init",
     "upgrade": "node ./bin/db upgrade",
     "test": "make test",

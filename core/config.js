@@ -1,4 +1,5 @@
 var env  = process.env.NODE_ENV || 'development';
+console.log('[env]', env);
 var _    = require('lodash');
 var path = require('path');
 var log4js = require('log4js');
