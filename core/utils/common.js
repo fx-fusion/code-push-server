@@ -94,6 +94,7 @@ common.createFileFromRequest = function (url, filePath) {
           reject(error);
         })
         .on('response', function (response) {
+          log.debug('[response.request]', response.request.href,response.statusCode);
           if (response.statusCode == 200) {
             let stream = fs.createWriteStream(filePath);
             response.pipe(stream);
